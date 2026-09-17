@@ -18,25 +18,34 @@ public class QuickChat {
         System.out.println("======= REGISTRATION =======");
         
         //first name
-        System.out.print("Hi there, please enter your username: ");
+        System.out.print("hi therer! please enter thy first name: ");
+        String firstName = input.nextLine();
+        
+        System.out.print("wonderful! now please enter your last name: ");
+        String lastName = input.nextLine();
+        
+        System.out.print("now, please enter your username: ");
         String userNumber = input.nextLine();
         
-        System.out.print("Hi there, please enter your phonenumber: ");
+        System.out.print("please enter your phonenumber: ");
         String phonenumber = input.nextLine();
         
-        System.out.print("Hi there, please enter your password: ");
+        System.out.print("please enter your password: ");
         String password = input.nextLine();
         String userName = null;
         
         //registration captures the user's details
-        NewClass NewClass = new NewClass(
+        SignUp SignUp = new SignUp(
+                firstName, 
+                lastName,
                 userName,
                 phonenumber,
-                password
-                
-        );
+                password             
+                    
+                );
+        
         
         //Login verifies user details
-           
-    }
+                  
+                }
 }
