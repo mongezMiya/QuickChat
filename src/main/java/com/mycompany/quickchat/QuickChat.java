@@ -24,7 +24,7 @@ public class QuickChat {
         System.out.print("wonderful! now please enter your last name: ");
         String lastName = input.nextLine();
         
-        System.out.print("now, please enter your username: ");
+        System.out.print("Powerful, " + lastName + "! Please enter your username: ");
         String userNumber = input.nextLine();
         
         System.out.print("please enter your phonenumber: ");
@@ -35,7 +35,7 @@ public class QuickChat {
         String userName = null;
         
         //registration captures the user's details
-        SignUp SignUp = new SignUp(
+        NewClass NewClass = new NewClass(
                 firstName, 
                 lastName,
                 userName,

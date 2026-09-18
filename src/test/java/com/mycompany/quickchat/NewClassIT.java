@@ -5,8 +5,9 @@
 package com.mycompany.quickchat;
 
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  *
@@ -31,9 +32,7 @@ public class NewClassIT {
        
     }
 
-    /**
-     * Test of checkphonenumber method, of class NewClass.
-     */
+
     @Test
     public void testCheckphonenumber() {
         System.out.println("checkphonenumber");

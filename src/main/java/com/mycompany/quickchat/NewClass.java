@@ -74,13 +74,13 @@ public class NewClass {
     }
 
     public String userLoginStatus(boolean loginSuccessful, boolean loginUnsuccessful) {
-
-        if (loginSuccessful) {
-            return "Welcome " + firstName + " " + lastName + ".";
-        } else {
-            return "Incorrect username or password, please try again.";
-        }
+    if (loginSuccessful) {
+        return "Welcome " + firstName + " " + lastName + ".";
+    } else {
+        return "Incorrect username or password, please try again.";
     }
+}
+
 }
 
 
