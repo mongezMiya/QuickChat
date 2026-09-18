@@ -4,10 +4,7 @@
  */
 package com.mycompany.quickchat;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,21 +17,7 @@ public class QuickChatIT {
     public QuickChatIT() {
     }
     
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
+   
 
     /**
      * Test of main method, of class QuickChat.
@@ -44,8 +27,7 @@ public class QuickChatIT {
         System.out.println("main");
         String[] args = null;
         QuickChat.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -59,8 +41,7 @@ public class QuickChatIT {
         boolean expResult = false;
         boolean result = instance.checkAge(age);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -74,8 +55,7 @@ public class QuickChatIT {
         boolean expResult = false;
         boolean result = instance.checkMemberNumber(number);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -91,8 +71,7 @@ public class QuickChatIT {
         String expResult = "";
         String result = instance.registerMember(memberName, memberAge, memberNumber);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }

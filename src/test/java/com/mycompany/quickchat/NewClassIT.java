@@ -5,19 +5,17 @@
 package com.mycompany.quickchat;
 
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  *
  * @author Student
  */
-public class NewClassTest {
+public class NewClassIT {
     
-    public NewClassTest() {
+    public NewClassIT() {
     }
-    
-    
 
     /**
      * Test of checkPassword method, of class NewClass.
@@ -44,7 +42,7 @@ public class NewClassTest {
         boolean expResult = false;
         boolean result = instance.checkphonenumber(phonenumber);
         assertEquals(expResult, result);
-       
+
     }
 
     /**
@@ -58,7 +56,7 @@ public class NewClassTest {
         boolean expResult = false;
         boolean result = instance.checkuserName(number);
         assertEquals(expResult, result);
-        
+       
     }
 
     /**
@@ -74,7 +72,7 @@ public class NewClassTest {
         String expResult = "";
         String result = instance.RegisterUser(userName, Password, phoneNumber);
         assertEquals(expResult, result);
-       
+        
     }
 
     /**
@@ -105,7 +103,7 @@ public class NewClassTest {
         String expResult = "";
         String result = instance.userLoginStatus(loginSuccessful, loginUnsuccessful);
         assertEquals(expResult, result);
-       
+        
     }
     
 }
