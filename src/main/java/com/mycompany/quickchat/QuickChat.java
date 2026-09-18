@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.quickchat;
 
 import java.util.Scanner;
@@ -13,39 +9,46 @@ import java.util.Scanner;
 public class QuickChat {
 
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
-        
+
         System.out.println("======= REGISTRATION =======");
-        
-        //first name
-        System.out.print("hi therer! please enter thy first name: ");
+
+        System.out.println("Hi there! Please enter your first name:");
         String firstName = input.nextLine();
-        
-        System.out.print("wonderful! now please enter your last name: ");
+
+        System.out.println("Wonderful! Now please enter your last name:");
         String lastName = input.nextLine();
-        
-        System.out.print("Powerful, " + lastName + "! Please enter your username: ");
-        String userNumber = input.nextLine();
-        
-        System.out.print("please enter your phonenumber: ");
+
+        System.out.println("Please enter your username:");
+        String userName = input.nextLine();
+
+        System.out.println("Please enter your phone number:");
         String phonenumber = input.nextLine();
-        
-        System.out.print("please enter your password: ");
+
+        System.out.println("Please enter your password:");
         String password = input.nextLine();
-        String userName = null;
-        
-        //registration captures the user's details
-        NewClass NewClass = new NewClass(
-                firstName, 
-                lastName,
-                userName,
-                phonenumber,
-                password             
-                    
-                );
-        
-        
-        //Login verifies user details
-                  
-                }
+
+        Login user = new Login(firstName, lastName, userName,
+                phonenumber, password);
+
+        String registrationMessage = user.registerUser();
+
+        System.out.println(registrationMessage);
+
+        System.out.println("\n======= LOGIN =======");
+
+        System.out.println("Please enter your username:");
+        String loginUsername = input.nextLine();
+
+        System.out.println("Please enter your password:");
+        String loginPassword = input.nextLine();
+
+        boolean loginSuccessful = user.loginUser(
+                loginUsername, loginPassword);
+
+        System.out.println(user.returnLoginStatus(loginSuccessful));
+
+        input.close();
+    }
 }
