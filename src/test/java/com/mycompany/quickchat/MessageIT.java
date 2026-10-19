@@ -1,5 +1,8 @@
 package com.mycompany.quickchat;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -137,6 +140,21 @@ public class MessageIT {
     public void testStoreMessage() {
         Message message = new Message(fixedId, 1, recipient2, text2);
         assertEquals("Message successfully stored.", message.SentMessage(3));
+    }
+
+    // ---------- JSON file ----------
+
+    @Test
+    public void testStoreMessageWritesJsonFile() throws IOException {
+        Message message = new Message(fixedId, 0, recipient1, text1);
+        message.SentMessage(3);   // 3 = store
+
+        File file = new File("messages.json");
+        assertTrue(file.exists());
+
+        String content = Files.readString(file.toPath());
+        assertTrue(content.contains("\"messageHash\": \"00:0:HITONIGHT\""));
+        assertTrue(content.contains("\"recipient\": \"+27718693002\""));
     }
 
     // ---------- Totals and printing ----------
