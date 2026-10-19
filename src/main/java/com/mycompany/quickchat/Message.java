@@ -1,5 +1,7 @@
 package com.mycompany.quickchat;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -19,7 +21,7 @@ public class Message {
     // Shared by all messages, hence they are static
     private static int totalSent = 0;
     private static String sentReport = "";
-    private static String storedReport = "";
+    private static String storedJson = "";
 
     // Constructor that runs every time a new message is created
     public Message(String messageID, int messageNumber, String recipient,
@@ -123,7 +125,7 @@ public class Message {
             return "Press 0 to delete the message.";
 
         } else if (choice == 3) {
-            storedReport = storedReport + getDetails() + "\n-----------\n";
+            storeMessage();
             return "Message successfully stored.";
 
         } else {
@@ -152,11 +154,49 @@ public class Message {
         return totalSent;
     }
 
+    // Stores the message in messages.json by building the JSON text ourselves.
+    // The file writing code (FileWriter with try/catch) is adapted from:
+    // W3Schools (n.d.) Java Create and Write To Files. Available at:
+    // https://www.w3schools.com/java/java_files_create.asp
+    // (Accessed: 19 October 2026).
+    // The JSON layout (a list of objects with "name": "value" pairs) follows:
+    // JSON.org (n.d.) Introducing JSON. Available at:
+    // https://www.json.org/json-en.html (Accessed: 19 October 2026).
+    public void storeMessage() {
+        String entry = "  {\n"
+                + "    \"messageID\": \"" + messageID + "\",\n"
+                + "    \"messageHash\": \"" + makeJsonSafe(messageHash) + "\",\n"
+                + "    \"recipient\": \"" + recipient + "\",\n"
+                + "    \"message\": \"" + makeJsonSafe(messageText) + "\"\n"
+                + "  }";
+
+        // put a comma between the entries
+        if (!storedJson.equals("")) {
+            storedJson = storedJson + ",\n";
+        }
+        storedJson = storedJson + entry;
+
+        // write the whole list to the file
+        try (FileWriter writer = new FileWriter("messages.json")) {
+            writer.write("[\n" + storedJson + "\n]");
+        } catch (IOException e) {
+            System.out.println("Could not store message: " + e.getMessage());
+        }
+    }
+
+    // quotes and backslashes inside the message would break the JSON,
+    // so we put a backslash in front of them
+    private static String makeJsonSafe(String text) {
+        text = text.replace("\\", "\\\\");
+        text = text.replace("\"", "\\\"");
+        return text;
+    }
+
     // Clears the shared totals (used by the unit tests)
     public static void resetTotals() {
         totalSent = 0;
         sentReport = "";
-        storedReport = "";
+        storedJson = "";
     }
 
     public String getMessageID() {
