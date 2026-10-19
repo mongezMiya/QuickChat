@@ -33,13 +33,19 @@ public class Message {
         this.messageHash = createMessageHash();
     }
 
-    // Makes a random 10 digit number from 2 five-digit halves
+    // Makes a random 10 digit ID. A for loop picks one digit at a time
+    // using substring, so the loop counter builds the ID.
     public static String generateMessageID() {
         Random rand = new Random();
-        int firstHalf = rand.nextInt(90000) + 10000;
-        int secondHalf = rand.nextInt(90000) + 10000;
+        String digits = "0123456789";
+        String id = "";
 
-        return "" + firstHalf + secondHalf;
+        for (int i = 0; i < 10; i++) {
+            int position = rand.nextInt(10);
+            id = id + digits.substring(position, position + 1);
+        }
+
+        return id;
     }
 
     // Message ID must be no more than ten characters
@@ -184,7 +190,7 @@ public class Message {
         }
     }
 
-    // quotes and backslashes inside the message would break the JSON,
+    // Quotes and backslashes inside the message would break the JSON,
     // so we put a backslash in front of them
     private static String makeJsonSafe(String text) {
         text = text.replace("\\", "\\\\");
